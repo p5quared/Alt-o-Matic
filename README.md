@@ -1,4 +1,4 @@
-# Alt-o-Matic
+# Alt-o-Matic!
 A simple Chrome extension which automatically generates alt text for images in your browser.
 
 ![Demo Gif](demo.gif)
