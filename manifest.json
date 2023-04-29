@@ -4,7 +4,6 @@
   "description": "Separate fact from fiction.",
   "version": "1.0",
   "action": {
-    "default_popup": "hello.html"
   },
   "content_scripts": [
     {
@@ -16,5 +15,8 @@
   ],
   "host_permissions": [
     "https://altomatic.fly.dev/test"
+  ],
+  "permissions":[
+    "storage"
   ]
 }
