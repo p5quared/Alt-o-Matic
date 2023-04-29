@@ -19,11 +19,20 @@ function img_find() {
 }
 
 function set_alt(img){
+    let fetch_lang = '';
+    chrome.storage.sync.get('LANG_SETTING').then((result) => {
+        fetch_lang = result.LANG_SETTING;
+        console.log(result.LANG_SETTING);
+     
+    });
+    console.log(fetch_lang);
+    
     console.log("Attemping to fetch...")
     const img_url = img.src
     const url_protocol = img_url.split(":")[0]
     const url_remaining = img_url.split(":")[1]
-    const fetch_url = "https://altomatic.fly.dev/test-params?proto=" + url_protocol + "&dest=" + url_remaining
+    const fetch_url = "https://altomatic.fly.dev/test-params?proto=" + url_protocol + "&fetch_lang=" + fetch_lang
+    console.log(fetch_url)
     fetch(fetch_url)
         .then(response => {
             console.log(response);
@@ -37,6 +46,48 @@ function set_alt(img){
     }).catch(error => {
         console.error('Error:', error);
     })
-}
+
+}function drop_down(){
+
+      const selected = document.querySelector(".selected");
+      const optionsContainer = document.querySelector(".options-container");
+      const optionsList = document.querySelectorAll(".option");
+
+      selected.addEventListener("click", () => {
+        optionsContainer.classList.toggle("active");
+      });
+
+      optionsList.forEach(option => {
+        option.addEventListener("click", () => {
+          selected.innerHTML = option.querySelector("label").innerHTML;
+          optionsContainer.classList.remove("active");
+          let LANG = '';
+          switch(selected.outerText){
+            case 'English':
+            LANG = "EN"
+            console.log(LANG)
+            break
+            
+            case 'German':
+            LANG = "GR";
+            console.log(LANG)
+            break
+    
+            case 'French':
+            LANG = "FR"
+            console.log(LANG)
+            break
+    
+            case 'Spanish':
+            LANG = "ES"
+            console.log(LANG)
+            break
+          }
+          chrome.storage.sync.set({ LANG_SETTING: LANG });
+        })
+        })
+
+      };
 img_find();
+drop_down();
 
