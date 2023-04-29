@@ -6,13 +6,15 @@
   "action": {
     "default_popup": "hello.html"
   },
-
-"content_scripts": [
-  {
-    "js": ["scripts.js"],
-    "matches": [
-      "https://*/*"
-    ]
-  }
-]
+  "content_scripts": [
+    {
+      "js": ["scripts/insert_alts.js"],
+      "matches": [
+	      "https://*/*"
+      ]
+    }
+  ],
+  "host_permissions": [
+    "https://altomatic.fly.dev/test"
+  ]
 }
