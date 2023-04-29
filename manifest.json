@@ -4,6 +4,7 @@
   "description": "Describe the web.",
   "version": "1.0",
   "action": {
+    "default_popup": "hello.html"
   },
   "content_scripts": [
     {
@@ -14,9 +15,6 @@
     }
   ],
   "host_permissions": [
-    "https://altomatic.fly.dev/test"
-  ],
-  "permissions":[
-    "storage"
+    "https://altomatic.fly.dev/*"
   ]
 }
