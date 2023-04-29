@@ -1,9 +1,9 @@
 console.log("Extension loaded!");
 function img_find() {
-    var imgs = document.getElementsByTagName("img");
-    var imgSrcs = [];
+    let imgs = document.getElementsByTagName("img");
+    let imgSrcs = [];
 
-    for (var i = 0; i < imgs.length; i++) {
+    for (let i = 0; i < imgs.length; i++) {
         if(imgs[i].alt == ""){
         imgSrcs.push(imgs[i]);
         }
@@ -16,7 +16,7 @@ function img_find() {
 }
 
 function alt_insert(imgSrcs){
-    for (var i = 0; i < imgSrcs.length; i++) {
+    for (let i = 0; i < imgSrcs.length; i++) {
         imgSrcs[i].alt = "HOLY SHIT IT WORKED " + (i+1);
     }
 }
