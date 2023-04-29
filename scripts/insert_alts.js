@@ -1,5 +1,6 @@
 console.log("Extension loaded!");
 function img_find() {
+ 
     let all_images = document.getElementsByTagName("img");
     let images_no_alt = [];
 
@@ -16,6 +17,7 @@ function img_find() {
     for (let i = 0; i < images_no_alt.length; i++) {
         set_alt(images_no_alt[i]);
     }
+
 }
 
 function set_alt(img){
@@ -63,6 +65,8 @@ function set_lang(){
     return document.documentElement.lang;
 
 }
+
+
 img_find();
 drop_down();
 
