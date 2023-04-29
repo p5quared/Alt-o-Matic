@@ -1,6 +1,5 @@
-console.log("Extension loaded!");
+console.log("Alt-o-matic is running!");
 function img_find() {
- 
     let all_images = document.getElementsByTagName("img");
     let images_no_alt = [];
 
@@ -17,56 +16,29 @@ function img_find() {
     for (let i = 0; i < images_no_alt.length; i++) {
         set_alt(images_no_alt[i]);
     }
-
 }
 
+// Get alt text from API and set in DOM
 function set_alt(img){
-    console.log("Attemping to fetch...")
+    console.log("Attempting to fetch...")
     const img_url = img.src
-    const url_protocol = img_url.split(":")[0]
-    const url_remaining = img_url.split(":")[1]
-    const fetch_url = "https://altomatic.fly.dev/test-params?proto=" + url_protocol + "&fetch_lang=" + set_lang();
-    console.log(fetch_url)
+    const encoded = encodeURIComponent(img_url)
+    const lang = 'en'
+    const fetch_url = "https://altomatic.fly.dev/generate?url=" + encoded + "&lang=" + lang
     fetch(fetch_url)
         .then(response => {
             console.log(response);
             if (!response.ok) {
                 return Promise.reject(new Error('Failed to load'));
             }else{
-                return response.json();
+                return response.text()
             }
         }).then(data => {
         console.log('DATA:', data);
+        img.alt = data;
     }).catch(error => {
         console.error('Error:', error);
     })
-
-}function drop_down(){
-
-      const selected = document.querySelector(".selected");
-      const optionsContainer = document.querySelector(".options-container");
-      const optionsList = document.querySelectorAll(".option");
-
-      selected.addEventListener("click", () => {
-        optionsContainer.classList.toggle("active");
-      });
-
-      optionsList.forEach(option => {
-        option.addEventListener("click", () => {
-          selected.innerHTML = option.querySelector("label").innerHTML;
-          optionsContainer.classList.remove("active");
-          let LANG = '';
-          
-        })
-        })
-
-      };
-function set_lang(){
-    return document.documentElement.lang;
-
 }
-
-
 img_find();
-drop_down();
 
