@@ -20,5 +20,46 @@ function alt_insert(imgSrcs){
         imgSrcs[i].alt = "HOLY SHIT IT WORKED " + (i+1);
     }
 }
-img_find();
 
+// Dropdown Menu
+function drop_down(){
+    let LANG = 'ENG';
+      const selected = document.querySelector(".selected");
+      const optionsContainer = document.querySelector(".options-container");
+      const optionsList = document.querySelectorAll(".option");
+
+      selected.addEventListener("click", () => {
+        optionsContainer.classList.toggle("active");
+      });
+
+      optionsList.forEach(option => {
+        option.addEventListener("click", () => {
+          selected.innerHTML = option.querySelector("label").innerHTML;
+          optionsContainer.classList.remove("active");
+          
+          switch(selected.outerText){
+            case 'English':
+            console.log(LANG)
+            break
+            
+            case 'German':
+            LANG = "GER";
+            console.log(LANG)
+            break
+    
+            case 'French':
+            LANG = "FRA"
+            console.log(LANG)
+            break
+    
+            case 'Spanish':
+            LANG = "SPA"
+            console.log(LANG)
+            break
+          }
+        })
+        })
+      };      
+/*---------------------------------------------------------------------------*/
+img_find();
+drop_down();

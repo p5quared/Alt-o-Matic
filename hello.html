@@ -1,9 +1,57 @@
 <html>
   <head>
-    <script></script>
+    <script src="scripts.js" defer></script>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
+    <div class="title">
+    <h1>Alt-O-Matic</h1>
+  </div>
+  <!--             DropDown Language Menu                -->  
+  <div class="container">
+      
+      <div class="select-box">
+        <div class="options-container">          
+          <div class="option">
+            <input
+                   type="radio"
+                   class="radio"
+                   id="ENG"
+                   name="category"
+                   />
+            <label for="EN">
+              <h3>English</h3> 
+            </label>
+          </div>
     
-    <h1>BS DETECTOR Jacky is the best</h1>
+          <div class="option">
+            <input type="radio" class="radio" id="SPA" name="category" value="SPA" />
+            <label for="SPA">
+              <h3>Spanish</h3> 
+            </label>
+          </div>
+    
+          <div class="option">
+            <input type="radio" class="radio" id="GER" name="category" />
+            <label for="GER">
+              <h3>German</h3> 
+            </label>
+          </div>
+          <div class="option">
+            <input type="radio" class="radio" id="FRA" name="category" />
+            <label for="FRA">
+              <h3>French</h3> 
+            </label>
+          </div>
+        </div>
+        <div class="selected">
+          <h3>Language...</h3>
+        </div> 
+        
+      </div>
+      <!-- 		/.select-box -->
+    </div>
+  <!-- 	           DropDown Language Menu                -->
+
   </body>
 </html>
