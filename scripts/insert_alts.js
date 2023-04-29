@@ -19,19 +19,11 @@ function img_find() {
 }
 
 function set_alt(img){
-    let fetch_lang = '';
-    chrome.storage.sync.get('LANG_SETTING').then((result) => {
-        fetch_lang = result.LANG_SETTING;
-        console.log(result.LANG_SETTING);
-     
-    });
-    console.log(fetch_lang);
-    
     console.log("Attemping to fetch...")
     const img_url = img.src
     const url_protocol = img_url.split(":")[0]
     const url_remaining = img_url.split(":")[1]
-    const fetch_url = "https://altomatic.fly.dev/test-params?proto=" + url_protocol + "&fetch_lang=" + fetch_lang
+    const fetch_url = "https://altomatic.fly.dev/test-params?proto=" + url_protocol + "&fetch_lang=" + set_lang();
     console.log(fetch_url)
     fetch(fetch_url)
         .then(response => {
@@ -62,32 +54,15 @@ function set_alt(img){
           selected.innerHTML = option.querySelector("label").innerHTML;
           optionsContainer.classList.remove("active");
           let LANG = '';
-          switch(selected.outerText){
-            case 'English':
-            LANG = "EN"
-            console.log(LANG)
-            break
-            
-            case 'German':
-            LANG = "GR";
-            console.log(LANG)
-            break
-    
-            case 'French':
-            LANG = "FR"
-            console.log(LANG)
-            break
-    
-            case 'Spanish':
-            LANG = "ES"
-            console.log(LANG)
-            break
-          }
-          chrome.storage.sync.set({ LANG_SETTING: LANG });
+          
         })
         })
 
       };
+function set_lang(){
+    return document.documentElement.lang;
+
+}
 img_find();
 drop_down();
 
