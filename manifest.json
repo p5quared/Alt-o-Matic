@@ -5,5 +5,14 @@
   "version": "1.0",
   "action": {
     "default_popup": "hello.html"
+  },
+
+"content_scripts": [
+  {
+    "js": ["scripts.js"],
+    "matches": [
+      "https://*/*"
+    ]
   }
+]
 }
